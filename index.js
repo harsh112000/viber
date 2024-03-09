@@ -16,11 +16,12 @@ app.use(cors());
 const PORT = process.env.PORT || 5000;
 
 const __dirname = path.resolve();
+
+app.static(path.join(__dirname,  'client/build'));
 app.get('/', (req, res) => {
 	res.send('path.join(__dirname, "client/build", index.html")');
 });
 
-app.static(path.join(__dirname,      'client/build'));
 io.on("connection", (socket) => {
 	socket.emit("me", socket.id);
 
